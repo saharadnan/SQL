@@ -1,0 +1,32 @@
+--Create a grocery store database
+
+CREATE TABLE store(id INTEGER PRIMARY KEY, item TEXT, quantity INTEGER, availability TEXT, price INTEGER);
+
+INSERT INTO store VALUES (1, "Blouse", 100, "Yes", 19.99);
+INSERT INTO store VALUES (2, "Shorts", 0, "No", 29.99);
+INSERT INTO store VALUES (3, "Heels", 130, "Yes", 59.99);
+INSERT INTO store VALUES (4, "Sports Bra", 500, "Yes", 35.99);
+INSERT INTO store VALUES (5, "Underwear", 700, "Yes", 9.99);
+INSERT INTO store VALUES (6, "Skirt", 150, "Yes", 39.99);
+INSERT INTO store VALUES (7, "Pants", 0, "No", 69.99);
+INSERT INTO store VALUES (8, "Hoodie", 220, "Yes", 60.99);
+INSERT INTO store VALUES (9, "Lingerie", 0, "No", 100);
+INSERT INTO store VALUES (10, "Bathing Suit", 90, "Yes", 81.99);
+INSERT INTO store VALUES (11, "Camisole", 210, "Yes", 29.99);
+INSERT INTO store VALUES (12, "Perfume", 180, "Yes", 120);
+INSERT INTO store VALUES (13, "Body Lotion", 109, "Yes", 15.99);
+INSERT INTO store VALUES (14, "Leggings", 498, "Yes", 91.99);
+INSERT INTO store VALUES (15, "Body mist", 89, "Yes", 30.99);
+
+--display the database ordered by price. 
+SELECT * FROM store WHERE quantity > 1 
+ORDER BY price asc;
+
+--display the sum of quantities available
+SELECT SUM(quantity) FROM store;
+
+--display the database ordered by quantity. 
+SELECT item, price, quantity
+FROM store
+order by quantity desc
+limit 5; 
