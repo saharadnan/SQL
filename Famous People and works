@@ -1,0 +1,46 @@
+/* Create table about the people and what they do here */
+
+CREATE TABLE famous(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    fullname TEXT,
+    category TEXT,
+    gender TEXT);
+    
+INSERT INTO famous (fullname, category, gender) VALUES ("Tom Cruise", "Movie Star", "Male");
+INSERT INTO famous (fullname, category, gender) VALUES ("Madonna", "Singer", "Female");
+INSERT INTO famous (fullname, category, gender) VALUES ("Stephen King", "Author", "Male");
+INSERT INTO famous (fullname, category, gender) VALUES ("Michael Jackson", "Singer", "Male");
+INSERT INTO famous (fullname, category, gender) VALUES ("William Shakespeare", "Author", "Male");
+INSERT INTO famous (fullname, category, gender) VALUES ("Marilyn Monroe", "Movie Star", "Female");
+INSERT INTO famous (fullname, category, gender) VALUES ("J. K. Rowling", "Author", "Female");
+
+CREATE TABLE works(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    person_id INTEGER,
+    name TEXT);
+
+INSERT INTO works (person_id, name) VALUES (1, "Top Gun");
+INSERT INTO works (person_id, name) VALUES (2, "Material Girl");
+INSERT INTO works (person_id, name) VALUES (3, "The Shining");
+
+INSERT INTO works (person_id, name) VALUES (4, "Beat It");
+INSERT INTO works (person_id, name) VALUES (5, "Romeo and Juliet");
+INSERT INTO works (person_id, name) VALUES (6, "The Misfits");
+INSERT INTO works (person_id, name) VALUES (7, "Harry Potter and the Prisoner of Azkaban");
+
+/*Returns famous person with their category and famous work*/
+SELECT famous.fullname, famous.gender, famous.category, works.name
+FROM famous
+JOIN works
+ON famous.id = works.person_id
+order by famous.category;
+
+/*Lists the count of each category*/
+SELECT famous.category, count(famous.category) AS count
+FROM famous
+JOIN works
+ON famous.id = works.person_id
+group by famous.category;
+
+
+    
